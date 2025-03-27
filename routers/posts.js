@@ -9,6 +9,9 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
 	const id = parseInt(req.params.id);
 	const currentPost = posts[id-1];
+	if( isNaN(id) || id < 1){
+		res.send("Inserire un numero compreso tra 1 e 5")
+	}
 	if(id<=posts.length){
 		res.send(currentPost);
 	}else {
